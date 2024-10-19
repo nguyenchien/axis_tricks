@@ -5,7 +5,15 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
 
-// add event listener to the form
+// add event listener when focus on all inputs field
+const inputs = document.querySelectorAll('input');
+inputs.forEach((input)=>{
+  input.addEventListener('blur', ()=>{
+    validateInputs();
+  })
+})
+
+// add event listener when submit the form
 form.addEventListener('submit', function(e){
   e.preventDefault();
   validateInputs();
