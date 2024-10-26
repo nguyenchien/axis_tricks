@@ -1,0 +1,62 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'poppins', sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container {
+  display: flex;
+  gap: 30px;
+  width: 60%;
+  box-shadow: 2px 2px 10px #aaaaaa;
+  border-radius: 5px;
+  padding: 30px;
+}
+.left {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: azure;
+  border-radius: 5px;
+}
+.fa-solid {
+  font-size: 250px;
+  padding: 30px;
+  color: #06dbca;
+}
+#timer {
+  width: 50%;
+}
+#timer h2 {
+  color: #06dbca;
+}
+.counter {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+}
+.box {
+  background-color: #06dbca;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50px;
+  border-radius: 5px;
+}
+.box span {
+  font-size: 30px;
+}
+.box p {
+  margin: 0;
+}
+.name {
+  display: flex;
+  gap: 40px;
+}
