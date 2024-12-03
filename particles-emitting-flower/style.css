@@ -1,0 +1,80 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #0d0d0d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+.flower {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.petal {
+  position: absolute;
+  width: 150px;
+  height: 55px;
+  background-image: linear-gradient(45deg, #ff79c6, #ff5555);
+  border-radius: 50%;
+  margin-left: 60px;
+  margin-bottom: 40px;
+  transform-origin: 30% 90%;
+}
+.petal.is-01 {
+  transform: rotate(0deg);
+}
+.petal.is-02 {
+  transform: rotate(45deg);
+}
+.petal.is-03 {
+  transform: rotate(90deg);
+}
+.petal.is-04 {
+  transform: rotate(135deg);
+}
+.petal.is-05 {
+  transform: rotate(180deg);
+}
+.petal.is-06 {
+  transform: rotate(225deg);
+}
+.petal.is-07 {
+  transform: rotate(270deg);
+}
+.petal.is-08 {
+  transform: rotate(315deg);
+}
+.center {
+  width: 40px;
+  height: 40px;
+  background-image: radial-gradient(circle, #ffeb3b, #ffc107);
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+}
+.particle {
+  position:absolute;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: fly 2s ease-out forwards;
+}
+@keyframes fly {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(0);
+  }
+}
