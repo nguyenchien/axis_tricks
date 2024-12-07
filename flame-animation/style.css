@@ -1,0 +1,163 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.main {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+@keyframes flicker {
+  0% {
+    transform: rotate(-1deg);
+  }
+  20% {
+    transform: rotate(1deg);
+  }
+  40% {
+    transform: rotate(-1deg);
+  }
+  60% {
+    transform: rotate(1deg) scaleY(1.04);
+  }
+  80% {
+    transform: rotate(-2deg) scaleY(0.92);
+  }
+  100% {
+    transform: rotate(1deg);
+  }
+}
+.container {
+  width: 60px;
+  height: 60px;
+  transform-origin: center bottom;
+  animation: flicker 2s ease-in infinite alternate;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+.flame {
+  position: absolute;
+  bottom: 0;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 50%;
+  transform: rotate(-45deg) scale(1.5, 1.5);
+}
+.red {
+  width: 50px;
+  height: 50px;
+  left: 5px;
+  background-color: orangered;
+  box-shadow: 0 0 5px 4px orangered;
+}
+.orange {
+  width: 40px;
+  height: 40px;
+  left: 10px;
+  background-color: orange;
+  box-shadow: 0 0 9px 4px orange;
+}
+.yellow {
+  width: 30px;
+  height: 30px;
+  left: 15px;
+  background-color: gold;
+  box-shadow: 0 0 9px 4px gold;
+}
+.white {
+  width: 30px;
+  height: 30px;
+  left: 15px;
+  bottom: -4px;
+  background-color: white;
+  box-shadow: 0 0 9px 4px white;
+}
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  bottom: 50%;
+  left: 50%;
+}
+.blue {
+  width: 10px;
+  height: 10px;
+  left: 25px;
+  bottom: -25px;
+  background-color: slateblue;
+  box-shadow: 0 0 15px 10px slateblue;
+}
+.black {
+  width: 40px;
+  height: 40px;
+  left: 10px;
+  bottom: -60px;
+  background-color: black;
+  box-shadow: 0 0 15px 10px black;
+}
+.logs {
+  bottom: 0;
+  display: flex;
+  width: 100px;
+}
+.logs .one,
+.logs .three {
+  width: 90px;
+}
+.logs .one .log,
+.logs .three .log {
+  position: relative;
+  height: 40px;
+  background-color: #725442;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 11% 100%);
+  transform-origin: 0 0;
+  transform: skewY(-10deg);
+  margin-bottom: -1px;
+}
+.logs .one::after,
+.logs .three::after {
+  content: '';
+  display: block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #91725c;
+  transform: translate(-50%, -100%);
+  border: 2px solid #725442;
+  box-sizing: border-box;
+  margin-top: 1px;
+}
+.logs .three {
+  transform: scaleX(-1);
+  margin-left: -40px;
+}
+.logs .two {
+  width: 40px;
+  transform: translateX(-50%);
+}
+.logs .two .log {
+  position: relative;
+  height: 40px;
+  background-color: #725442;
+  clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+  margin-bottom: -17px;
+}
+.logs .two::after {
+  content: '';
+  display: block;
+  position: relative;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #91725c;
+  border: 2px solid #725442;
+  box-sizing: border-box;
+}
