@@ -1,0 +1,171 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  height: 100vh;
+  overflow: hidden;
+}
+.sky {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.moon {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at 40% 40%, #fff 60%, #f5f5f5 90%);
+  border-radius: 50%;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: moveMoon 10s infinite linear;
+}
+.moon:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 25px;
+  width: 100px;
+  height: 100px;
+  background-color: #000814;
+  border-radius: 50%;
+}
+.star {
+  width: 6px;
+  height: 6px;
+  background-color: #fff;
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle 3s infinite ease-in-out;
+}
+.star-1 {
+  top: 10%;
+  left: 30%;
+  animation-delay: 0.2s;
+}
+.star-2 {
+  top: 25%;
+  left: 70%;
+  animation-delay: 0.4s;
+}
+.star-3 {
+  top: 50%;
+  left: 20%;
+  animation-delay: 0.6s;
+}
+.star-4 {
+  top: 70%;
+  left: 80%;
+  animation-delay: 0.8s;
+}
+.star-5 {
+  top: 85%;
+  left: 40%;
+  animation-delay: 1s;
+}
+.star-6 {
+  top: 80%;
+  left: 45%;
+  animation-delay: 1.2s;
+}
+.star-7 {
+  top: 30%;
+  left: 70%;
+  animation-delay: 1.4s;
+}
+.star-8 {
+  top: 55%;
+  left: 75%;
+  animation-delay: 1.6s;
+}
+.star-9 {
+  top: 65%;
+  left: 65%;
+  animation-delay: 1.8s;
+}
+.star-10 {
+  top: 35%;
+  left: 35%;
+  animation-delay: 2s;
+}
+.star-11 {
+  top: 50%;
+  left: 55%;
+  animation-delay: 2.2s;
+}
+.star-12 {
+  top: 50%;
+  left: 50%;
+  animation-delay: 2.4s;
+}
+.star-13 {
+  top: 45%;
+  left: 45%;
+  animation-delay: 2.6s;
+}
+.star-14 {
+  top: 51%;
+  left: 41%;
+  animation-delay: 2.8s;
+}
+.star-15 {
+  top: 58%;
+  left: 56%;
+  animation-delay: 3s;
+}
+.star-16 {
+  top: 20%;
+  left: 25%;
+  animation-delay: 3.2s;
+}
+.star-17 {
+  top: 15%;
+  left: 30%;
+  animation-delay: 3.4s;
+}
+.star-18 {
+  top: 12%;
+  left: 27%;
+  animation-delay: 3.6s;
+}
+.star-19 {
+  top: 9%;
+  left: 9%;
+  animation-delay: 3.8s;
+}
+.star-20 {
+  top: 12%;
+  left: 18%;
+  animation-delay: 4s;
+}
+
+@keyframes moveMoon {
+  0% {
+  transform: translateX(-50%) translateY(0);
+  }
+  50% {
+  transform: translateX(-50%) translateY(-30px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
