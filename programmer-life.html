@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programmer Life</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      font-size: 3em;
+    }
+    .code {
+      background-color: silver;
+      padding: 1em 0;
+      font-size: 24px;
+      font-family: monospace;
+      border-radius: 0.5em;
+    }
+    .code p {
+      white-space: pre;
+      padding: 0 1em;
+      margin: 0.5em;
+    }
+    .code p:not(:last-child) {
+      animation: step 2s infinite;
+      animation-delay: var(--d);
+    }
+    .code p:nth-child(1),
+    .code p:nth-child(5) {
+      --d: 1.5s;
+    }
+    .code p:nth-child(2) {
+      --d: 0s;
+    }
+    .code p:nth-child(3) {
+      --d: 0.5s;
+    }
+    .code p:nth-child(4) {
+      --d: 1s;
+    }
+    @keyframes step {
+      0%, 25% {
+        color: white;
+        background-color: dodgerblue;
+      }
+      26%, 100% {
+        color: black;
+        background-color: transparent;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Programmer's Life</h1>
+  <div class="code">
+    <p>function repeat() {</p>
+    <p> eat();</p>
+    <p> sleep();</p>
+    <p> code();</p>
+    <p> repeat();</p>
+    <p>}</p>
+  </div>
+</body>
+</html>
