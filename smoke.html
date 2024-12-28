@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smoking Animation</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #000;
+      margin: 0;
+    }
+
+    .cigarette {
+      position: relative;
+      width: 20px;
+      height: 100px;
+      background-color: #d3d3d3;
+      border-radius: 10px;
+    }
+
+    .cigarette::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      background-color: #ff4500;
+      border-radius: 50%;
+    }
+
+    .smoke {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      animation: smoke 3s infinite;
+    }
+
+    @keyframes smoke {
+      0% {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -200px) scale(3);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cigarette">
+    <div class="smoke"></div>
+    <div class="smoke" style="animation-delay: 1s;"></div>
+    <div class="smoke" style="animation-delay: 2s;"></div>
+  </div>
+</body>
+</html>
