@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jumping Text Animation</title>
+  <style>
+    body {
+      font-family: 'Droid sans', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: black;
+      color: white;
+    }
+    @keyframes flip {
+      0% {
+        transform: rotateX(0deg);
+      }
+      30% {
+        transform: rotateX(0deg);
+      }
+      100% {
+        transform: rotateX(360deg);
+      }
+    }
+    @keyframes jump {
+      0% {
+        transform: translateY(0);
+      }
+      30% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(360deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes color {
+      0% {
+        color: white;
+      }
+      100% {
+        color: red;
+      }
+    }
+    .loading {
+      font-size: 1.5em;
+      width: 170px;
+      margin: 60px auto;
+      perspective: 900px;
+    }
+    .loading span {
+      display: inline-block;
+      animation-name: flip;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      transform-origin: 50% 50% 8px;
+      transform-style: preserve-3d;
+    }
+    .loading .l1 {animation-delay: 0.1s;}
+    .loading .l2 {animation-delay: 0.2s;}
+    .loading .l3 {animation-delay: 0.3s;}
+    .loading .l4 {animation-delay: 0.4s;}
+    .loading .l5 {animation-delay: 0.5s;}
+    .loading .l6 {animation-delay: 0.6s;}
+    .loading .l7 {animation-delay: 0.7s;}
+    .loading .l8 {animation-delay: 0.8s;}
+    .loading .l9 {animation-delay: 0.9s;}
+    .loading .l10 {animation-delay: 1s;}
+    .buttons {
+      display: inline-block;
+      margin: 5px;
+      padding: 10px 15px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="loading">
+    <span class="l1">L</span>
+    <span class="l2">o</span>
+    <span class="l3">a</span>
+    <span class="l4">d</span>
+    <span class="l5">i</span>
+    <span class="l6">n</span>
+    <span class="l7">g</span>
+    <span class="l8">.</span>
+    <span class="l9">.</span>
+    <span class="l10">.</div>
+  </div>
+
+  <div class="buttons">
+    <button class="flip">Flip</button>
+    <button class="jump">Jump</button>
+    <button class="rotate">Rotate</button>
+    <button class="color">Color</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    $( document ).ready(function() {
+      $('.flip').click(function() {
+        $('.loading>span').css({
+          'animation-name': 'flip',
+          'transform-origin': '50% 50% 8px',
+        });
+      });
+
+      $('.jump').click(function() {
+        $('.loading>span').css({
+          'animation-name': 'jump',
+        });
+      });
+
+      $('.rotate').click(function() {
+        $('.loading>span').css({
+          'animation-name': 'rotate',
+          'transform-origin': '50%',
+        });
+      });
+
+      $('.color').click(function() {
+        $('.loading>span').css({
+          'animation-name': 'color',
+        });
+      }); 
+    });
+  </script>
+</body>
+</html>
