@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs HTML CSS</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #eee;
+      height: 100vh;
+      padding: 10vh;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .tabs label {
+      order: 1;
+      display: block;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      background-color: #90caf9;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .tabs .tab {
+      order: 99;
+      flex-grow: 1;
+      width: 100%;
+      display: none;
+      padding: 1rem;
+      background-color: #fff;
+    }
+    .tabs input[type="radio"] {
+      display: none;
+    }
+    .tabs input[type="radio"]:checked + label {
+      background-color: #fff;
+    }
+    .tabs input[type="radio"]:checked + label + .tab {
+      display: block;
+    }
+
+    @media (max-width: 767px) {
+      .tabs .tab,
+      .tabs label {
+        order: initial;
+      }
+      .tabs label {
+       width: 100%;
+       margin-right: 0;
+       margin-top: 0.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="tabs">
+    <input type="radio" name="tabs" id="tabone" checked="checked">
+    <label for="tabone">Tab One</label>
+    <div class="tab">
+      <h2>Tab One Content</h2>
+      <p>This is Tab One content</p>
+    </div>
+    <input type="radio" name="tabs" id="tabtwo">
+    <label for="tabtwo">Tab Two</label>
+    <div class="tab">
+      <h2>Tab Two Content</h2>
+      <p>This is Tab Two content</p>
+    </div>
+    <input type="radio" name="tabs" id="tabthree">
+    <label for="tabthree">Tab Three</label>
+    <div class="tab">
+      <h2>Tab Three Content</h2>
+      <p>This is Tab Three content</p>
+    </div>
+  </div>
+</body>
+</html>
