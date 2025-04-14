@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spinning Dots</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      height: 100vh;
+      background: radial-gradient(circle at center, #000, #111);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .dot {
+      width: 5px;
+      height: 5px;
+      background-color: #00f0ff;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+    .globe {
+      transform-style: preserve-3d;
+      animation: spin 20s linear infinite;
+    }
+    @keyframes spin {
+      0% {
+        transform: rotateY(0deg);
+      }
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="globe" id="globe"></div>
+
+  <script>
+    const globe = document.getElementById('globe');
+    const dots = 300;
+    const radius = 90;
+
+    for (let i=0; i<dots; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'dot';
+      const theta = Math.acos(1 - 2 * (i+0.5) / dots);
+      const phi = Math.PI * (1 + Math.sqrt(12)) * (i + 0.5);
+      const x = radius * Math.sin(theta) * Math.cos(phi);
+      const y = radius * Math.sin(theta) * Math.sin(phi);
+      const z = radius * Math.cos(theta);
+      dot.style.transform = `translate3d(${x}px, ${y}px, ${z}px)`;
+      globe.appendChild(dot);
+    }
+  </script>
+</body>
+</html>
