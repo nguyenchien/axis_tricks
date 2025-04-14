@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline Toggle</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+      color: #fff;
+    }
+    .timeline {
+      display: flex;
+      gap: 40px;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      height: 4px;
+      background-color: #333;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      z-index: 0;
+      transform: translateY(-50%);
+    }
+    .step {
+      position: relative;
+      z-index: 1;
+    }
+    .step input {
+      display: none;
+    }
+    .step label {
+      display: block;
+      width: 30px;
+      height: 30px;
+      background-color: #555;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      position: relative;
+    }
+    .step input:checked + label {
+      background: #00f7ff;
+      transform: scale(1.2);
+    }
+    .step label:after {
+      content: attr(data-step);
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      color: #aaa;
+      white-space: nowrap;
+    }
+    .step input:checked + label:after {
+      color: #00f7ff;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="timeline">
+    <div class="step">
+      <input type="checkbox" id="step1">
+      <label for="step1" data-step="Start"></label>
+    </div>
+    <div class="step">
+      <input type="checkbox" id="step2">
+      <label for="step2" data-step="Design"></label>
+    </div>
+    <div class="step">
+      <input type="checkbox" id="step3">
+      <label for="step3" data-step="Develop"></label>
+    </div>
+    <div class="step">
+      <input type="checkbox" id="step4">
+      <label for="step4" data-step="Launch"></label>
+    </div>
+  </div>
+</body>
+</html>
