@@ -4,6 +4,7 @@ const path = require('path');
 const rootDir = __dirname;
 const outputFile = 'index.html';
 
+// Các thư mục/file cần bỏ qua
 const ignoreList = ['.git', 'node_modules', '.DS_Store'];
 
 function listTopLevel(dirPath) {
@@ -15,11 +16,12 @@ function listTopLevel(dirPath) {
 
     const fullPath = path.join(dirPath, item);
     const stat = fs.statSync(fullPath);
+    const encoded = encodeURIComponent(item);
 
     if (stat.isDirectory()) {
-      result += `<li><strong>${item}/</strong></li>\n`;
+      result += `<li><a href="${encoded}/" target="_blank"><strong>${item}/</strong></a></li>\n`;
     } else {
-      result += `<li>${item}</li>\n`;
+      result += `<li><a href="${encoded}" target="_blank">${item}</a></li>\n`;
     }
   });
 
@@ -35,6 +37,8 @@ const htmlContent = `
   <style>
     body { font-family: Arial; padding: 20px; }
     ul { list-style-type: none; padding-left: 20px; }
+    a { text-decoration: none; color: darkgreen; }
+    a:hover { text-decoration: underline; }
     strong { color: darkblue; }
   </style>
 </head>
@@ -48,4 +52,4 @@ const htmlContent = `
 `;
 
 fs.writeFileSync(outputFile, htmlContent);
-console.log(`✅ Đã tạo file index.html với danh sách cấp cao nhất trong "${rootDir}"`);
+console.log(`✅ Đã tạo index.html với link đầy đủ cho cả file và thư mục.`);
