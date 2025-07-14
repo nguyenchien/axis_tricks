@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Floral Animation</title>
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #222;
+      background-image: radial-gradient(circle at center, #222, #111 300px);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 420px;
+      overflow: hidden;
+    }
+    .flower {
+      position: relative;
+      transform-style: preserve-3d;
+      animation: rotateFlower 60s linear infinite;
+    }
+    @keyframes rotateFlower {
+      to {
+        transform: rotateY(360deg);
+      }
+    }
+    .leaf {
+      position: absolute;
+      height: 120px;
+      transform-origin: top;
+      transform-style: preserve-3d;
+      clip-path: polygon(0 100%, 50% 0, 100% 100%, 0 100%);
+      background-image: linear-gradient(#000e, #fff1);
+      border-radius: 100px;
+      animation: leafOpen 12s ease-in-out infinite,
+      ocLeafWidth 6s alternate infinite ease-in-out;
+    }
+    @keyframes leafOpen {
+      from {
+        transform: translateZ(-30px) rotate(var(--leafAngel)) rotateX(-90deg) rotateY(-15deg);
+      }
+      to {
+        transform: translateZ(30px) rotate(var(--leafAngel)) rotateX(90deg) rotateY(45deg);
+      }
+    }
+    @keyframes ocLeafWidth {
+      from {
+        width: 0;
+      }
+      to {
+        width: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="flower" class="flower"></div>
+  
+  <script>
+    const leafCount = 60;
+    const speed = 12;
+    const flower = document.getElementById('flower');
+
+    for(let i=0; i<leafCount; i++) {
+      const leaf = document.createElement('div');
+      leaf.className = 'leaf';
+      const angle = (360 / leafCount) * i;
+      const delay = -1 * (speed / leafCount) * i;
+      leaf.style.setProperty('--leafAngel', `${angle}deg`);
+      leaf.style.animationDelay = `${delay}s, ${delay / 2}s`;
+      leaf.style.backgroundColor = `hsl(${angle}, 75%, 75%)`;
+      flower.append(leaf);
+    }
+  </script>
+</body>
+</html>
