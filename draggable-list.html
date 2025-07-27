@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Draggable List with LocalStorage</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      background-color: #fff;
+      color: #111;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .list-wrap {
+      max-width: 400px;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
+      padding: 40px;
+    }
+    ul {
+      list-style: none;
+    }
+    li {
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #111;
+      cursor: move;
+      background: #f9f9f9;
+    }
+    .drop-zone {
+      background-color: #e0f7fa;
+    }
+  </style>
+</head>
+<body>
+
+<div class="list-wrap">
+  <h1>Task List</h1>
+  <ul id="list" class="list"></ul>
+</div>
+
+<script>
+  const list = document.getElementById('list');
+  let draggingEl = null;
+
+  // Dữ liệu mặc định nếu localStorage chưa có gì
+  const defaultItems = ["Breakfast", "Coding", "Lunch", "Coding", "Sleep", "Coding"];
+
+  // Load từ localStorage hoặc fallback sang default
+  function loadItems() {
+    const saved = localStorage.getItem('taskList');
+    return saved ? JSON.parse(saved) : defaultItems;
+  }
+
+  // Lưu danh sách hiện tại vào localStorage
+  function saveItems() {
+    const items = Array.from(list.children).map(li => li.textContent);
+    localStorage.setItem('taskList', JSON.stringify(items));
+  }
+
+  // Tạo lại danh sách từ dữ liệu
+  function renderList(items) {
+    list.innerHTML = '';
+    items.forEach(text => {
+      const li = document.createElement('li');
+      li.textContent = text;
+      li.setAttribute('draggable', 'true');
+      li.classList.add('item');
+      addDragEvents(li);
+      list.appendChild(li);
+    });
+  }
+
+  // Thêm sự kiện drag cho từng item
+  function addDragEvents(item) {
+    item.addEventListener('dragstart', () => {
+      draggingEl = item;
+      item.classList.add('dragging');
+    });
+
+    item.addEventListener('dragend', () => {
+      draggingEl = null;
+      item.classList.remove('dragging');
+      Array.from(list.children).forEach(i => i.classList.remove('drop-zone'));
+      saveItems(); // Lưu sau khi kéo xong
+    });
+
+    item.addEventListener('dragover', e => {
+      e.preventDefault();
+      if (item !== draggingEl) {
+        const rect = item.getBoundingClientRect();
+        const isAbove = e.clientY < rect.top + item.offsetHeight / 2;
+        list.insertBefore(draggingEl, isAbove ? item : item.nextSibling);
+        Array.from(list.children).forEach(i => i.classList.remove('drop-zone'));
+        item.classList.add('drop-zone');
+      }
+    });
+
+    item.addEventListener('dragleave', () => {
+      item.classList.remove('drop-zone');
+    });
+
+    item.addEventListener('drop', e => {
+      e.preventDefault();
+      item.classList.remove('drop-zone');
+    });
+  }
+
+  // Khởi tạo
+  const initialItems = loadItems();
+  renderList(initialItems);
+</script>
+
+</body>
+</html>
