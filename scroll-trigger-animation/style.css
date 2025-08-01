@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+  line-height: 1.7;
+  font-size: 16px;
+  font-weight: 400;
+  color: #111;
+}
+.scroll-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #ccc;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+.scroll-bar span {
+  display: inline-block;
+  height: 100%;
+  background-color: #333;
+  position: absolute;
+}
+section {
+  width: 100%;
+}
+.section-1,
+.section-2 {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+.section-1 {
+  background: #ffa07a;
+}
+.section-2 {
+  background: #90ee90;
+}
+.section-3 {
+  position: relative;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+.bg-image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+  z-index: 0;
+}
+.bg-image img {
+  width: 200%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateX(0);
+  transition: transform 4s linear;
+}
+.bg-image.show-animation img {
+  transform: translateX(-50%);
+}
+.content-wrapper {
+  position: relative;
+  z-index: 2;
+  padding: 100px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.content-1,
+.content-2 {
+  background: rgba(255,255,255,0.9);
+  padding: 40px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+}
+.content-1 img {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin: 0 auto 20px;
+}
+h2 {
+  margin-bottom: 20px;
+}
+p {
+  &:not(:first-of-type) {
+    margin-top: 20px;
+  }
+}
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+.list li {
+  padding: 80px 40px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
